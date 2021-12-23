@@ -72,6 +72,13 @@ class ViewController: UIViewController {
     
     }
     
+    @IBAction func content(_ sender: UIBarButtonItem) {
+        
+        let selectedMin = picker.selectedRow(inComponent: 0)
+        timerSetLabl.text = "\(num[selectedMin]) minutes timer set"
+
+    }
+    
     @IBAction func StartTimerButton(_ sender: UIButton) {
         
         localNotifications()
@@ -94,13 +101,12 @@ class ViewController: UIViewController {
         let currentTime = Date()
         let formatter = DateFormatter()
         formatter.timeStyle = .short
-    //   let timeString = formatter.string(from: currentTime)
+      //  let timeString = formatter.string(from: currentTime)
         let addminutes = currentTime.addingTimeInterval(TimeInterval(num[selectedMin] * 60))
         
       //  formatter.dateFormat = "yyyy-MM-dd H:mm:ss"
         let after_add_time = formatter.string(from: addminutes)
         time.text = "Work Until : \(after_add_time)"
-        
 
     }
     
@@ -116,6 +122,7 @@ class ViewController: UIViewController {
     }
     func cancel(){
         let selectedMin = picker.selectedRow(inComponent: 0)
+        UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
         picker.reloadAllComponents()
         timerSetLabl.text = "\(num[selectedMin]) minutes timer cancelled"
         time.isHidden = true
@@ -131,7 +138,10 @@ class ViewController: UIViewController {
         let content = UNMutableNotificationContent()
         content.title = "Time End"
         content.body = "Stop Working"
+        content.sound = .default
+        
         //create notifications trigger
+        
         //
         let d = Date().addingTimeInterval(TimeInterval(num[selectedMin] * 60))
         let dateComponents = Calendar.current.dateComponents([.year , .month ,.day ,.hour ,.minute ,.second], from: d)

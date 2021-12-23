@@ -65,11 +65,18 @@
                                                 <action selector="cancel:" destination="BYZ-38-t0r" id="O9b-44-0p3"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="ezw-NE-E7t">
-                                            <connections>
-                                                <action selector="NewDay:" destination="BYZ-38-t0r" id="ayu-nP-hq8"/>
-                                            </connections>
-                                        </barButtonItem>
+                                        <rightBarButtonItems>
+                                            <barButtonItem systemItem="add" id="ezw-NE-E7t">
+                                                <connections>
+                                                    <action selector="NewDay:" destination="BYZ-38-t0r" id="ayu-nP-hq8"/>
+                                                </connections>
+                                            </barButtonItem>
+                                            <barButtonItem title="Item" image="list.bullet" catalog="system" id="BIJ-wb-kt7">
+                                                <connections>
+                                                    <action selector="content:" destination="BYZ-38-t0r" id="UD5-0t-Nx3"/>
+                                                </connections>
+                                            </barButtonItem>
+                                        </rightBarButtonItems>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -119,6 +126,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="list.bullet" catalog="system" width="128" height="88"/>
         <systemColor name="tintColor">
             <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
